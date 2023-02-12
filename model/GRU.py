@@ -1,10 +1,10 @@
 import torch
 import torch.nn as nn
-# from model.EmbGCN import EmbGCN as GCN              # TARGCN
+from model.EmbGCN import EmbGCN as GCN              # TARGCN
 # from model.EmbGCN import EmbGCN_noGate as GCN     # noGate
 # from model.EmbGCN import EmbGCN_linear as GCN     # TARGCN-linear
 # from model.EmbGCN import EmbGCN_SA as GCN         # TARGCN-SA
-from model.EmbGCN import EmbGCN_GLU as GCN         # TARGCN-SA
+# from model.EmbGCN import EmbGCN_GLU as GCN         # TARGCN-SA
 
 class GRU(nn.Module):
     def __init__(self, node_num, dim_in, dim_out,adj, cheb_k, embed_dim):

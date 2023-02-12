@@ -78,6 +78,7 @@ class EmbGCN(nn.Module):
         x_g = torch.einsum("nm,bmc->bnc", supports, x)      #B, cheb_k, N, dim_in
 
         x_gconv = torch.einsum('bni,nio->bno', x_g, weights) + bias     #b, N, dim_out
+        x_gconv=x_gconv*torch.sigmoid(x_gconv)
 
         return x_gconv+torch.sigmoid(x_static)*x_static # 静+动
 
