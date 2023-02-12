@@ -97,7 +97,8 @@ class TCN_cell(nn.Module):
                 gcn_output.append(x_gcn)
             current_inputs=torch.stack(gcn_output,dim=1) # b t n d
 
-        b, t, n, d = x.shape
+        print('current_inputs  shape::::::::::::::',current_inputs.shape)
+        b, t, n, d = current_inputs.shape
         for j in range(self.tcn_num):
             current_inputs = current_inputs.permute(0, 2, 3, 1)  # b n d t
             current_inputs = current_inputs.reshape(b * n, d, t)  # b*n d t
