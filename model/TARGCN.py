@@ -90,10 +90,11 @@ class TCN_cell(nn.Module):
         seq_length = x.shape[1]
 
         current_inputs = x
-        gcn_output=[]
+
         for i in range(self.gcn_num):
+            gcn_output = []
             for t in range(seq_length):
-                x_gcn = self.gcns[i](x[:, t, :, :],node_embeddings)
+                x_gcn = self.gcns[i](current_inputs[:, t, :, :],node_embeddings)
                 gcn_output.append(x_gcn)
             current_inputs=torch.stack(gcn_output,dim=1) # b t n d
 
