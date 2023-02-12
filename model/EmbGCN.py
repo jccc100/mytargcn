@@ -134,7 +134,7 @@ class EmbGCN_GLU(nn.Module):
         self.cheb_k = cheb_k
         self.linear=nn.Linear(dim_in, dim_out,bias=True)
         self.sym_norm_Adj_matrix = torch.from_numpy(sym_norm_Adj(adj)).to(torch.float32).to(torch.device('cuda'))
-        self.SA = Spatial_Attention_layer(adj.shape[0], dim_in, dim_out)
+        self.SA = Spatial_Attention_layer(adj.shape[0], dim_out, dim_out)
         self.sym_norm_Adj_matrix = F.softmax(self.sym_norm_Adj_matrix)
     def forward(self, x, node_embeddings):
         #x shaped[B, N, C], node_embeddings shaped [N, D] -> supports shaped [N, N]
