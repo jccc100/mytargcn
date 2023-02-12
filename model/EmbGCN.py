@@ -70,7 +70,7 @@ class EmbGCN(nn.Module):
         x_static = torch.einsum("nm,bmc->bmc",torch.softmax(self.sym_norm_Adj_matrix,dim=-1),x) # 预定义邻接矩阵
 
         print(':::::::::::::::',x_static.shape)
-        x_static = self.linear(x_static)
+        # x_static = self.linear(x_static)
 
 
 
